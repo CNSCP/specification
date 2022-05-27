@@ -1,4 +1,4 @@
-# CNS/CP: The Connection Profile system
+# CNS/CP: Connectivity Naming System and Connection Profiles
 
 Authors:  
 T. Considine  
