@@ -3,26 +3,23 @@
 Authors:  
 T. Considine  
 A Budiardjo  
-May 2022
+June 2022
 
 This document describes the Connectivity Naming System and Connection Profiles for exchanging information to support creating connections between independent systems to compose systems of systems.
 
-Connection Profiles (CP) describe nodes that can provide a service (“Server Nodes”) and nodes that can interact with a service (“Client Nodes”). A Connection Profile defines a complementary Server Capability and Client Capability. Client nodes and Server nodes using the same Connection Profile are Complementary Nodes. Complementary Nodes published in the same Connection Broker define a Connection.
+Connection Profiles define how a node can expose a Capability, and how another node can consume that Capability. Each exposed Capability can be considered as a microservice with a single responsibility, and each consuming Capability a means to interact with that microservice. This Capability might define a decomposed business capability, or a single verb, or a single use case. The relationship between the exposed Capability and the consuming Capability defines a Connection, part of a relationship whereby the Node may request information from the microservice, or request a state change in the system behind that microservice. 
 
-Every Connection Profile has a unique name, and immutable characteristics. Each Connection Profile describes a purpose and a capability for a Connection and the interfaces and protocols that a Connection requires. This document describes how to specify a Connection Profile.
+System interoperation is the loose coupling of different systems to achieve some purpose. The complexity and ever-developing diversity of the systems has traditionally led to closed integrations that are neither dynamic, repeatable or re-usable at scale. A growing number of system interactions are across domains; some examples of such interoperating systems are referred to as Smart Buildings, Industrie 40, Digital Twins, Internet of Things, Smart Enterprise, Smart Cities, and Smart Energy. 
 
-The document also describes the Connectivity Naming System (CNS). Two functions support CNS: a universal public Connection Registry and a private local Connection Broker. The Connection Registry enables system developers and integrators to share and re-use their Connection Profiles. The Connection Broker publishes specific systems and the Connection Profiles they support. The Connection Broker discovers Complementary Nodes to create Connections.
+Connection Profiles as described herein are a mechanism to define and publish common interactions between systems. A Connection Profile defines a Capability which consists of two roles. The Connection Profile names this Capability, and defines how systems (“Nodes”) can publish their ability to interact in these Roles, exposing them for discovery, and enabling interoperation with compatible Nodes through loose coupling.
 
-Note that there is no implied ordinality of Clients and Servers. A Server Node may Connect to many complementary Client Nodes. A Client Node may connect to many complementary Server Nodes.
+Each Connection Profile has a unique name, metadata about its purpose and creator, and defines a capability which consists of two roles. A Connection Profile describes how a node representing a system exposes a Capability, and how another node can consume or invoke that Capability. For each role, the Connection Profile itemizes the interfaces and protocols that are required to create a Connection. A Connection identifies the ability of two nodes to use a capability. This document describes how to specify a Connection Profile.
 
-CNS assumes distributed development of and universal access to a common registry of Connection Profiles. Because Connection Profiles may evolve, the Version is an essential characteristic of Connection Profiles. The rules for interoperability between versions are defined below. CNS uses hierarchical naming standards analogous to those in DNS (see [RFC1034] and [RFC1035]) to track origin and responsibility for each Connection Profile. This document does not describe the implementation of a Connection Profile Registry.
+Complementary roles, that is complementary published capabilities based on the same Connection Profile, define Connections. Systems may use Connections to create relationships, that is, communicate using one or more Connections.
 
-Together Connectivity Naming Services and Connection Profiles (CNS/CP) support de-siloing the smart systems that comprise the Internet of Things and to establish the dynamic interoperation known as Digital Twins. CNS/CP allows Client and Server systems to connect within a System of Systems. Together, CNS/CP is an open connectivity mechanism of the Internet. This document outlines the CNS/CP architecture, the use of Connection Profiles, the Connection Profile Registry, defines Client and Server profiles, and the role of the Connection Broker to create Connections.
+No specific topology is defined by the CNS/CP framework. While the specificity needed to define a single Connection Profile is typically directional, CP/CNS does not suggest a particular topology. A Node may publish multiple capabilities and an ability to consume many capabilities. Many nodes may interact with the same microservice. True peers may interact through identical paired Connection Profiles, each Node offering the microservice, and each node consuming from the other. 
 
-This document defines the Connection Profile Registry. The Connection Profile Registry refers to a means to register and publish Connection Profile information for widespread dissemination and public use. By analogy, the Registry distributes authority for the definition of Connection Profiles as DNS distributes management of hostnames, while enabling common use of that information.
-
-This document defines the Connection Broker. The Connection Broker is a means to publish information about specific systems able to act as Server Nodes or as Client Nodes as defined in Connection Profiles. The Connection Broker discovers complementary Nodes, a client for each server, to create Connections. The Connection Broker can be very simple, or able to provide advanced services. More advanced brokers may offer connection proxies, or message translation, or manage security around node-to-node connections. Such functions are out of scope for this document.
-
+The document also describes the Connectivity Naming System (CNS). Two functions support CNS: a universal public Connection Profile Registry and a private local Connection Broker. The Connection Profile Registry enables system developers and integrators to share and re-use their Connection Profiles. The Connection Broker publishes specific systems and the Connection Profiles they support. The Connection Broker discovers Complementary Nodes to create Connections.
 The author anticipates open-source Connection Brokers offering the minimum functionality of node matching.
 
 This document is independent of any particular service or protocol. This document defines interfaces for each of the systems described through examples conveyed in JSON; these examples are for clarity but do not mandate a specific serialization or binding for messages.
@@ -342,7 +339,7 @@ If the Broker accepts the submission, then the Server Capability or Client Capab
 
 ## Creating Connections
 
-After publication of a Server Capability or a Client Capability, the Broker examines all existing published Nodes for a match.
+Upon publication of a Server Capability or a Client Capability, the Broker examines all existing published Nodes for a complementary Capability.
 
 A Client Capability and a Server Capability match, if they are based on the same Connection Profile, have complementary Capabiltiies, and have a matching Context. A Null Context on a Server Capability matches to all Client Capabilities based on the same Connection Profile no matter the Context. A Null Context on a Client Capability matches to all Server Capabilities based on the same Connection Profile no matter the Context.
 
