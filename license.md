@@ -9,6 +9,7 @@ These sub-licenses shall be royalty-free and public subject to the following con
 * That any Connection Profiles created must be made available for anyone to access, view, and use for free and without restriction under the CC-BY-ND license.
 * That any Connection Profiles created must be placed into a federated Connection Profile Registry following procedures established by the CNS Licensee(s).*
 * That the federated Connection Profile Registry will be managed by the CNS Licensee(s) and made available to the public for free and without restriction.
+
 Until completion of the standardization process, Padi encourages comment and debate on the CNS/CP mechanism and invites individual requests for standalone licenses for research, education, and experimentation purposes. 
 
 This document is not intended as a license, but rather a statement of intention.
