@@ -2,7 +2,7 @@
 
 Authors:  
 T. Considine  
-A Budiardjo  
+A. Budiardjo  
 June 2022
 
 This document describes the Connectivity Naming System and Connection Profiles for exchanging information to support creating Connections between independent systems to compose systems of systems.
