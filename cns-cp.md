@@ -2,7 +2,7 @@
 
 Authors:  
 T. Considine  
-A Budiardjo  
+A. Budiardjo  
 June 2022
 
 This document describes the Connectivity Naming System and Connection Profiles for exchanging information to support creating Connections between independent systems to compose systems of systems.
@@ -82,14 +82,6 @@ The Internet Research Task Force (IRTF) describes the Internet of Things (IoT) i
 
 In quick summary, the Internet of Things (IoT) denotes the interconnection of highly heterogeneous networked entities and networks. The networked things named as components of the Internet of Things are smart devices that understand and react to the environment they reside in. The complexity of a thing may range from a simple network-addressable sensor to a purpose-built autonomous system.
 
-It is important for both the client and server to use defined and constrained interactions with such systems so that:
-
--   Interactions do not harm or impair the functioning of remote systems (“Servers”).
--   Would-be consumers of information (“Clients”) can find appropriate sources of information without needing to understand the inner workings of the Server.
--   Clients and Servers can negotiate protocols and specifications needed for interoperation.
--   Connections to Servers are discoverable and can be re-used by different Clients to accomplish a variety of ends.
--   The work performed to expose a server connection can be re-used over the life of a networked system. Systems in buildings and infrastructure often remain in production for decades rather than the years typical for many enterprise systems.
-
 Digital Twinning names a wide-ranging set of practices from the simple collection of a few data points to maintaining a complete abstract model of a remote system. When applied to manufacturing and to logistics processes, this is sometimes referred to as Industry 4.0. The aim is to develop various rich networked applications and realize efficient and cost-effective data-driven process management.
 
 The purposes of Digital Twin Networks include:
@@ -107,6 +99,14 @@ Component systems often rely on internal protocols that are poorly suited to tra
 The IRTF Digital Twin Reference Architecture names and defines three layers: Application Layer, Digital Twin Layer, and Physical Network Layer. CNS/CP specifies a machine-readable catalog of the Digital Twin layer. CNS/CP catalogs expose components and functionalities and define standardized and unified interfaces.
 
 Digital twin networks synchronize all or a subset of the data related to involved component systems in real time, which inevitably expands the attack surface, and increases the risk of information leakage. CNS/CP supports the development of more secure data mechanisms and data protection methods, even atop legacy protocols by enabling the use of defined, re-usable Nodes.
+
+This specification defines ameans to publish complementary roles by which two nodes may interact. For clarity of exposition, we designate one role to be a "Server" and the other a "Client". These terms are limited to a particular published interaction and do not limit the autnomy of either node. A system acting as a Server in one interaction may act as a Client in another. It is important for both the Client and the Server to use defined and constrained interactions with such systems so that:
+
+-   Interactions do not harm or impair the functioning of remote systems.
+-   Would-be consumers of information (“Clients”) can find appropriate sources of information or service without needing to understand the inner workings of the systems providing the information or service ("Servers").
+-   Complementary nodes can negotiate protocols and specifications needed for interoperation.
+-   Connections to Servers are discoverable and can be re-used by different Clients to accomplish a variety of ends.
+-   The work performed to expose a Server connection can be re-used over the life of a networked system. Systems in buildings and infrastructure often remain in production for decades rather than the years typical for many enterprise systems.
 
 A Node can chain Connections together. The purpose of a particular Node may be to process other Connections. A Node may provide translation of message or of binding and expose that using a different Profile. A Client Node may process information from several Server Nodes and publish a Server Node representing a single summary or consensus. Such nodes would register as Client Nodes to consume data from Servers and Server Nodes, to provide services to other Clients.
 
