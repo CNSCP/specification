@@ -23,7 +23,7 @@ No specific topology is defined by the CNS/CP framework. While the specificity n
 
 The document also describes the Connectivity Naming System (CNS). Two functions support CNS: a universal public Connection Profile Registry and a private local Connection Broker. The Connection Profile Registry enables system developers and integrators to share and re-use their Connection Profiles. The Connection Broker publishes specific systems and the Connection Profiles they support. The Connection Broker discovers Complementary Nodes to create Connections.
 
-The author anticipates open-source Connection Brokers offering the minimum functionality of node matching.
+The authors anticipates open-source Connection Brokers offering the minimum functionality of node matching.
 
 This document is independent of any particular service or protocol. This document defines interfaces for each of the systems described through examples conveyed in JSON; these examples are for clarity but do not mandate a specific serialization or binding for messages.
 
