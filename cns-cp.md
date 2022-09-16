@@ -3,22 +3,27 @@
 Authors:  
 T. Considine  
 A. Budiardjo  
-June 2022
+September 2022
 
 This document describes the Connectivity Naming System and Connection Profiles for exchanging information to support creating Connections between independent systems to compose systems of systems.
 
-A Connection Profile defines how a node can expose a Capability, and how another node can consume that Capability. Each exposed Capability can be considered as a service with a single responsibility, and each consuming Capability as a means to interact with that service. This Capability might define a decomposed business capability, or a microservice, or a single verb, or a single use case. The relationship between the exposed Capability and the consuming Capability defines a Connection, part of a relationship whereby the Node may request information from the service, or request a state change in the system behind that service. 
-
 System interoperation is the loose coupling of different systems to achieve some purpose. The complexity and ever-developing diversity of systems has traditionally led to closed integrations that are neither dynamic, repeatable or re-usable at scale. A growing number of system interactions are across domains; some examples of such interoperating systems are referred to as Smart Buildings, Industrie 4.0, Digital Twins, Internet of Things, Smart Enterprise, Smart Cities, and Smart Energy. 
+
+In distributed computing systems, the traditional way that nodes connect is for one node to instigate a connection by addressing a target node, together with a communication schema and payload. The target node then responds, thus creating a connection where data can be exchanged.
+
+CNS/CP introduces an intent-based way to establish connections, whereby nodes declare a context and standardized capabilities to a common broker. The broker’s purpose is to match the context and capabilities to create connections between nodes that are modeled on the matched capability. This mechanism avoids the need for nodes to be concerned about network addresses or other communication issues, and focusing instead on enabling valuable capabilities.
+
+A Connection Profile defines how a node can expose a Capability, and how another node can consume that Capability. Each exposed Capability can be considered as a service with a single responsibility, and each consuming Capability as a means to interact with that service. This Capability might define a decomposed business capability, or a microservice, or a single verb, or a single use case. The relationship between the exposed Capability and the consuming Capability defines a Connection, part of a relationship whereby the Node may request information from the service, or request a state change in the system behind that service. 
 
 Connection Profiles as described herein are a mechanism to define and publish common interactions between systems. A Connection Profile defines a Capability which consists of two roles. Each Connection Profile has a unique name, metadata about its purpose and its creator. Each Connection Profile describes how a node representing a system exposes a Capability, and how another node can consume or invoke that Capability. For each role, the Connection Profile itemizes the interfaces and protocols that are required to create a Connection. 
 
-Complementary Roles, that is complementary published capabilities based on the same Connection Profile, define Connections. A Connection identifies the discovered ability of two nodes interact through a Capability. This document describes how to specify a Connection Profile. Systems may use Connections to create relationships, that is, communicate using one or more Connections.
+Complementary Roles, that is complementary published capabilities based on the same Connection Profile, define Connections. A Connection identifies the discovered ability of two nodes to interact through a Capability. This document describes how to specify a Connection Profile. Systems may use Connections to create relationships, that is, communicate using one or more Connections.
 
-No specific topology is defined by the CNS/CP framework. While the specificity needed to define a single Connection Profile is typically directional, CP/CNS does not suggest a particular topology. A Node may publish multiple capabilities and an ability to consume many capabilities. Many nodes may interact with the same service. True peers may interact through reciprocal paired Connection Profiles, each Node offering the service, and each node consuming from the other. 
+No specific topology is defined by the CNS/CP framework. While the specificity needed to define a single Connection Profile is typically directional, CNS/CP does not suggest a particular topology. A Node may publish multiple capabilities and an ability to consume many capabilities. Many nodes may interact with the same service. True peers may interact through reciprocal paired Connection Profiles, each Node offering the service, and each node consuming from the other. 
 
 The document also describes the Connectivity Naming System (CNS). Two functions support CNS: a universal public Connection Profile Registry and a private local Connection Broker. The Connection Profile Registry enables system developers and integrators to share and re-use their Connection Profiles. The Connection Broker publishes specific systems and the Connection Profiles they support. The Connection Broker discovers Complementary Nodes to create Connections.
-The author anticipates open-source Connection Brokers offering the minimum functionality of node matching.
+
+The authors anticipates open-source Connection Brokers offering the minimum functionality of node matching.
 
 This document is independent of any particular service or protocol. This document defines interfaces for each of the systems described through examples conveyed in JSON; these examples are for clarity but do not mandate a specific serialization or binding for messages.
 
