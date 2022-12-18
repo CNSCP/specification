@@ -3,7 +3,7 @@
 Authors:  
 T. Considine  
 A. Budiardjo  
-November 2022
+December 2022
 
 System interoperation is the loose coupling of different purpose-built
 systems to achieve some purpose. The complexity and ever-developing
