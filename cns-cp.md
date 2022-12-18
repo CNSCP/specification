@@ -12,10 +12,16 @@ are neither dynamic, repeatable, or re-usable at scale. These closed
 integrations typically require deep domain knowledge of each system by
 the integrator.
 
-A growing number of system interactions are across domains. Terms for
-such systems of interoperating systems in the Internet of Things include
+A growing number of system interactions are across domains. 
+
+Terms for such systems of interoperating systems in the Internet of Things include
 Smart Buildings, Industrie 4.0, Digital Twins, Smart Enterprise, Smart
-Cities, and Smart Energy. In cybersecurity, external observation of
+Cities, and Smart Energy. Too often, integrators reach directly to devices 
+increasing both technical complexity and increasing integration burden. Large-scale 
+integrations should encapsulate technical volatility. Connections to systems rather
+than to the device enable the system to encapsulate the volatility and reduce the knowledge required.
+
+In cybersecurity, external observation of
 overall system performance and health creates service-oriented security,
 particularly useful for detecting cyberthreats to cyberphysical systems.
 Regulatory or research systems may use interaction with natural
