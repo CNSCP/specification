@@ -167,7 +167,7 @@ application.
 
 This document describes a method to define and document the regular
 conveyance of data between diverse privately held systems to mandated
-processes and within regulated environments..
+processes and within regulated environments.
 
 There is a growing interest in Digital Twins, and in the Internet of
 Things.
