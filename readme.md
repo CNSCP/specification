@@ -6,4 +6,6 @@ CNS/CP defines information exchanges to support creating connections between ind
 
 The current draft of specification can be found in cns-cp.md (https://github.com/CNSCP/specification/blob/main/cns-cp.md)
 
+For how the specification, the software, the Connection Profiles and the name are licensed, see [license.md](license.md), which points to the one authoritative statement at https://cnscp.io/license/.
+
 We welcome comments and suggestions
