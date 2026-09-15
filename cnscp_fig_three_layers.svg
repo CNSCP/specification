@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="384" viewBox="0 0 680 384" role="img" font-family="Helvetica, Arial, sans-serif">
+<title>The three layers and the substrate</title>
+<desc>Three stacked layers joined by vertical connectors: application layer on top, connection layer in the middle containing CNS/CP, identity layer at the bottom. An irregular dashed region surrounds the connection layer, labelled substrate - the meeting place where systems can interact.</desc>
+<rect x="140" y="42" width="400" height="52" rx="4" fill="#F1EFE8" stroke="#5F5E5A"/>
+<text x="340" y="64" font-size="14" font-weight="bold" fill="#444441" text-anchor="middle">Application layer</text>
+<text x="340" y="82" font-size="12" fill="#5F5E5A" text-anchor="middle">what connected systems say to each other</text>
+<line x1="340" y1="94" x2="340" y2="146" stroke="#888780" stroke-width="1.5"/>
+<line x1="340" y1="258" x2="340" y2="300" stroke="#888780" stroke-width="1.5"/>
+<text x="560" y="122" font-size="12" fill="#5F5E5A" text-anchor="middle">substrate — the meeting place</text>
+<path d="M 64 180 C 50 156, 82 136, 128 142 C 178 126, 300 122, 400 126 C 470 120, 540 126, 574 136 C 618 142, 646 158, 632 178 C 650 202, 642 238, 604 252 C 544 270, 424 276, 324 272 C 224 278, 112 272, 80 258 C 46 248, 44 212, 64 180 Z" fill="none" stroke="#888780" stroke-width="1.5" stroke-dasharray="6 5"/>
+<rect x="120" y="146" width="440" height="112" rx="4" fill="#EEEDFE" stroke="#534AB7"/>
+<text x="340" y="170" font-size="14" font-weight="bold" fill="#3C3489" text-anchor="middle">Connection layer</text>
+<text x="340" y="188" font-size="12" fill="#534AB7" text-anchor="middle">whether a connection may exist, and on what terms</text>
+<rect x="240" y="200" width="200" height="46" rx="4" fill="#EEEDFE" stroke="#534AB7" stroke-width="2"/>
+<text x="340" y="220" font-size="14" font-weight="bold" fill="#3C3489" text-anchor="middle">CNS/CP</text>
+<text x="340" y="236" font-size="12" fill="#534AB7" text-anchor="middle">this specification</text>
+<rect x="140" y="300" width="400" height="52" rx="4" fill="#F1EFE8" stroke="#5F5E5A"/>
+<text x="340" y="322" font-size="14" font-weight="bold" fill="#444441" text-anchor="middle">Identity layer</text>
+<text x="340" y="340" font-size="12" fill="#5F5E5A" text-anchor="middle">who a party is</text>
+</svg>
