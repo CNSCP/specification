@@ -1,71 +1,49 @@
-# CNS/CP Specification — 2026 Revision
+# CNS/CP: Connectivity Naming System using Connection Profiles
 
-## Clean reading copy — Sections 1 to 10
+## Specification — 2026 Revision
 
-> **Draft preview for information only — not a contribution to OSTERA.**
+**Status:** 2026 revision, working draft.  
+**Date:** 16 September 2026  
+**Editors:** Toby Considine; Anto Budiardjo
 
-**Editors:** Toby Considine, Anto Budiardjo
-**Assembled:** 14 September 2026, from the canon working drafts as of this
-date (§1 v0.9, §2 v0.14, §3 v0.16, §4 v0.18, §5 v0.16, §6 v0.21, §7 v0.18,
-§8 v0.26, §9 v0.21, §10 v0.18).
+No text herein is final.
 
-**What this is.** The full drafted specification in sequence, with all
-editorial apparatus removed — drafting notes, changes tables, provenance
-ledgers, open questions, and editors' notes. NOTE paragraphs remain
-because they are spec text, marked informative. Figure 1 is supplied
-alongside as `cnscp_fig_three_layers.png`; it is informative, and the
-text stands without it. The PDF copy of this document carries line
-numbers in the margin; review comments should cite them.
+### Provenance
 
-**What this is not.** Not a version. The canon working drafts remain the
-source of truth, and any comment or edit should be made against them;
-this document is regenerated from canon and never edited directly.
+This is a revision of the CNS/CP specification first published in December 2022 by the same editors. It keeps the 2022 design — named, versioned Connection Profiles; Nodes that declare what they can do; a governed process that forms Connections between them — and restates it on a canonical vocabulary, with a six-step process, a defined conformance boundary, and the additions the intervening years asked for: Channels, the Realm, and composition across Realms. Appendix B maps the 2022 vocabulary to this one. The 2022 text is published unchanged as history alongside this revision.
 
-**How this revision was written.** The design and every decision in this
-document are the editors', made in review with the CNS/CP pre-working
-group between July and September 2026. The text was drafted and revised
-with Claude, an AI assistant made by Anthropic, working under the
-editors' direction from those decisions; every sentence was read by an
-editor, and the normative sections by the group, before it stood. A
-register kept alongside the drafts records each decision, who made it,
-and when. The method is stated here because it was unusual; it does not
-bear on the text, which is to be read on its own terms.
+**How this revision was written.** The design and every decision in this document are the editors', made in review with the CNS/CP pre-working group between July and September 2026. The text was drafted and revised with Claude, an AI assistant made by Anthropic, working under the editors' direction from those decisions; every sentence was read by an editor, and the normative sections by the group, before it stood. A register kept alongside the drafts records each decision, who made it, and when. The method is stated here because it was unusual; it does not bear on the text, which is to be read on its own terms.
 
-**Review state.** Every section has been before the pre-working group,
-most of them more than once: §1 and §2 in early August, §3 and §4 on
-18–21 August, §5–§7 on 25 August, the whole document on 1 September, and
-§6, §8 and §10 again on the calls of 8 September. On **14 September the
-group walked the forty substantive points the editors had drafted since
-the last full review, one by one, and raised no comment on any of them**.
-The body of this document is settled so far as the pre-working group is
-concerned.
+### Requirements language
 
-Three pieces are newer than that review and the group has not yet seen
-them: Appendix A, the front matter, and the note in this title page on
-how the revision was written.
+The keywords SHALL, SHALL NOT, SHOULD, SHOULD NOT, and MAY are normative only where they appear in capitals; SHALL and MUST are synonyms, and this specification uses SHALL. Text marked *(Informative)*, and every NOTE, is not normative.
 
-**Known open points.** Short, and none of it structural:
+From §4 onward, a capitalized word carries the meaning defined in §4 and no other. Words not so defined are used in their ordinary sense.
 
-- §6.5 — Channel quantitative floors, and Realm limits on Channel
-  throughput. The editors propose none in this revision; nobody has
-  asked for any. The Protocol attribute's anchoring to IANA names
-  stands as a SHOULD.
-- §7.1 — the allocation-function and continuity sentences, awaiting
-  Considine's review; §9.3's companion clauses he has ratified.
-- §4.3 — a Context is a string, and may also carry richer structure a
-  Realm interprets. Reflected as he asked; his eye still wanted.
-- Two questions carried from Considine's own -b material: whether
-  Inactive is a Capability status as well as a Connection status, and
-  querying Capabilities by status. The editors read both as
-  implementation surface rather than specification (§2.2).
+### Terminology
 
-Institutional questions the specification deliberately does not answer
-— who judges conformance, who operates the Registry, who allocates Top
-Level Prefixes — are outside its scope and are not open points in the
-text.
+The terms this specification depends on, each in one line. §4 defines them; where a line here and §4 differ, §4 governs.
 
-**Status:** Working draft. Not a contribution; no text herein is final,
-and normative keywords appear only where the canon drafts carry them.
+| Term | In one line | Defined |
+|---|---|---|
+| **Realm** | The bounded region within which one Governor forms Connections; the durable object of this specification. | §4.1 |
+| **Governor** | The role that holds a Realm's rules and its Context Register, admits Nodes, and runs the six steps. | §4.1 |
+| **Node** | The entity through which a system takes part in a Realm; what enrolls, asserts Contexts, and declares Capabilities. | §4.2 |
+| **Context** | A string denoting an entity within a Realm's scope — a room, a feeder, a vehicle; belongs to no Node. | §4.3 |
+| **Connection Profile** (Profile) | A named, versioned description of an interaction: two roles, the Properties each supplies, any Channels. A template, not an instance. | §4.4, §6 |
+| **Property** | A named value a Profile assigns to a role to supply, with the attributes §6.4 gives it. | §6.4 |
+| **Channel** | A named service a Profile declares, carrying an application protocol in one of three delivery modes; opened on every Connection at Bind. | §4.4, §6.5 |
+| **Capability** | A Node's declaration that it can fill one role of one Profile at one Context. Carries no values. | §4.4 |
+| **Connection** | The governed relationship the Governor forms between two Nodes whose Capabilities match; constituted at Bind. | §4.4, §8.7 |
+| **Registry** | The one global service that holds published Profile versions and registered names, and nothing else. | §4.4, §7.3 |
+
+### Clause status
+
+§1 and §3 are informative. §2 is informative except §2.3, which states the conformance boundary. §4 is normative: it carries no keyword, but every requirement in §5–§10 depends on its definitions. §5–§10 are normative except where a subsection is marked *(informative)* and in every NOTE. Appendices A, B and C are informative. Figure 1 is informative, and the text stands without it.
+
+### Reading order
+
+§3 tells the story in a page: realms, governors, six steps, five facts. §4 gives the words. §6–§7 describe the Profile and its registry; §8 the process; §9 what conformance requires of each party; §10 the lifecycle of a Connection and how Realms compose. Appendix A walks one building case through all six steps.
 
 ---
 
@@ -731,7 +709,7 @@ old infrastructure remains admitted, and its Connections continue, until the
 Governor acts. What the Governor owes the new infrastructure is
 re-establishment of identities under the new infrastructure on the
 Governor's own schedule — at once, or over a handover period, as its rules
-state. 
+state.
 
 ### 5.2 Coordination with the application layer
 
@@ -2438,3 +2416,37 @@ configured the reader's identity and nothing else.
 | Conveyance floor; direct route | A minimum the Realm conveys, and a route past it | Gone: everything a Connection carries passes through the Realm | §8.8 |
 
 ---
+
+---
+
+## Appendix C. Open issues *(informative)*
+
+This revision is a working draft. The points below are known to the
+editors and are not settled; everything else in the document is.
+
+- **§6.5 — quantitative floors for Channels.** The specification sets no
+  minimum throughput, latency, message size, or Channel-name length, and
+  says nothing about a Realm limiting Channel throughput. The editors
+  propose none in this revision, on the ground that these are properties
+  of a deployment rather than terms of a contract. The anchoring of a
+  Channel's Protocol attribute to IANA service names and ALPN
+  identifiers stands as a SHOULD, and comment on it is welcome.
+- **§7.1 — allocation and continuity.** The sentences describing the
+  allocation function, and what happens to allocations already made when
+  a formal allocation authority arrives, are under editorial review.
+- **§4.3 — a Context as a string, and as structure.** A Context is a
+  string matched by exact equality; a Realm whose Contexts carry richer
+  structure is permitted, and nothing is required of that structure. The
+  two statements are both intended, and their wording is under review.
+- **Connection status and Capabilities.** Whether a Capability, as
+  distinct from a Connection, should itself carry a status, and whether
+  Capabilities should be queryable by status, were raised during
+  drafting. The editors read both as implementation surface rather than
+  specification (§2.2), and this revision defines neither.
+
+Questions the specification deliberately does not answer are not open
+issues. It does not say who judges conformance, who operates the
+Connection Profile Registry, or who allocates Top Level Prefixes. Those
+are institutional arrangements outside the scope of a specification
+that describes what must be true rather than who must do it; §7.5 and
+§9 mark the boundary.
